@@ -159,6 +159,10 @@ const message = customRef<string>((track, trigger) => {
 const input   = ref('');
 const notes   = ref<Array<string>>([]);
 
+const user = ref({
+  login: 'VanyaMate',
+  age  : 27,
+});
 
 const updateInput = function (event: InputEvent) {
   input.value = (event.target as HTMLInputElement).value;
@@ -191,4 +195,7 @@ const updateMessageFromNotification = function () {
   <ul>
     <li v-for="note in notes">{{ note }}</li>
   </ul>
+  <hr/>
+  <p>{{ user.login }}</p>
+  <p @click="user.age++">{{ user.age }}</p>
 </template>
