@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import HelloWorld from '../components/HelloWorld.vue';
+import TodoPage from '@/todo/ui/page/TodoPage/TodoPage.vue';
 </script>
 
 <template>
-  <HelloWorld msg="Vue hello"/>
+  <TodoPage/>
 </template>

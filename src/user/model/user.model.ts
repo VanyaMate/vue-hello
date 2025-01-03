@@ -1,5 +1,5 @@
 import { effect, store } from '@vanyamate/sec-vue';
-import { updateLoginFromServer } from '@/action/updateLoginFromServer.ts';
+import { updateLoginFromServer } from '@/user/action/updateLoginFromServer.ts';
 
 
 export const updateLoginFromServerEffect = effect(updateLoginFromServer);

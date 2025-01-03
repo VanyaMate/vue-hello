@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useStore } from '@vanyamate/sec-vue';
-import { updateLoginFromServerEffect, userStore, userStoreLoading } from '@/model/user.model.ts';
+import { updateLoginFromServerEffect, userStore, userStoreLoading } from '@/user/model/user.model.ts';
 
 
 defineProps<{ msg: string }>();
