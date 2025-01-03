@@ -90,7 +90,6 @@ const getStylesForStep = function (step: number) {
     };
   }
 };
-
 </script>
 
 <template>
