@@ -14,8 +14,7 @@ const createTodo = function (event: FormDataEvent) {
   if (formData.get('title')) {
     createTodoEffect({ title: formData.get('title'), description: formData.get('description') })
         .then(() => {
-          (event.target as HTMLFormElement).elements.namedItem('title').value       = '';
-          (event.target as HTMLFormElement).elements.namedItem('description').value = '';
+          (event.target as HTMLFormElement).reset();
         });
   }
 };

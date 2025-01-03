@@ -20,8 +20,9 @@ onMounted(() => {
   <TodoCreateForm/>
   <hr/>
   <h1 v-if="loading">Загрузка</h1>
-  <div class="list">
-    <TodoItemWidget v-if="!loading" v-for="todo in todos" :todo="todo" :key="todo.id"/>
+  <div class="list" v-else>
+    <TodoItemWidget v-if="todos.length" v-for="todo in todos" :todo="todo" :key="todo.id"/>
+    <div v-else>Пусто</div>
   </div>
 </template>
 
