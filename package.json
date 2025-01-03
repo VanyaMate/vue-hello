@@ -9,8 +9,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@vanyamate/sec": "^0.1.4",
-        "@vanyamate/sec-vue": "^0.0.1",
+        "@vanyamate/sec-vue": "^0.0.3",
         "vue": "^3.5.13"
     },
     "devDependencies": {
