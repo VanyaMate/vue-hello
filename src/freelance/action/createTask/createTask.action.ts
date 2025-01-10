@@ -1,20 +1,17 @@
-import type { CreateTaskData, Task } from '@/freelance/types/task.types.ts';
+import type {
+    CreateTaskData,
+    TaskCreateResponseApi,
+} from '@/freelance/types/task.types.ts';
 import { getApiEndpoint } from '@/app/utils/getApiEndpoint.util.ts';
 
 
-export const createTaskAction = async function (data: CreateTaskData): Promise<Task> {
+export const createTaskAction = async function (data: CreateTaskData): Promise<TaskCreateResponseApi> {
     return fetch(getApiEndpoint(`/freelance.json`), {
         method : 'POST',
-        body   : JSON.stringify(data),
+        body   : JSON.stringify({ ...data, createdAt: Date.now() }),
         headers: {
             'Content-Type': 'application/json',
         },
     })
-        .then((response) => response.json())
-        .then((data) => {
-            return {
-                id: data.name,
-                ...data,
-            };
-        });
+        .then((response) => response.json());
 };

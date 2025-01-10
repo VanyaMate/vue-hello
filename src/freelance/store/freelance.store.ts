@@ -1,5 +1,9 @@
 import type { StoreOptions } from 'vuex';
-import type { Task, UpdateTaskData } from '@/freelance/types/task.types.ts';
+import type {
+    CreateTaskData,
+    Task,
+    UpdateTaskData,
+} from '@/freelance/types/task.types.ts';
 import { getTasksAction } from '@/freelance/action/getTasks/getTasks.action.ts';
 import {
     deleteTaskAction,
@@ -7,16 +11,28 @@ import {
 import {
     updateTaskAction,
 } from '@/freelance/action/updateTask/updateTask.action.ts';
+import {
+    createTaskAction,
+} from '@/freelance/action/createTask/createTask.action.ts';
+import { getTaskAction } from '@/freelance/action/getTask/getTask.action.ts';
 
 
 export default {
     namespaced: true,
     state     : {
-        tasks: [],
+        loading : false,
+        tasks   : [],
+        uploaded: false,
     },
     getters   : {
         tasks (store) {
             return store.tasks;
+        },
+        loading (store) {
+            return store.loading;
+        },
+        uploaded (store) {
+            return store.uploaded;
         },
     },
     mutations : {
@@ -34,10 +50,20 @@ export default {
                 }
             }
         },
+        setLoading (state, status) {
+            state.loading = status;
+        },
+        addTask (state, task) {
+            console.log('Add task', task);
+            state.tasks.push(task);
+        },
     },
     actions   : {
         async uploadTasks (context) {
+            context.commit('setLoading', true);
             context.commit('setTasks', await getTasksAction());
+            context.commit('setLoading', false);
+            context.state.uploaded = true;
         },
         async deleteTask (context, payload: string) {
             await deleteTaskAction(payload);
@@ -48,7 +74,12 @@ export default {
             updateData: UpdateTaskData
         }) {
             await updateTaskAction(payload.id, payload.updateData);
-            context.commit('deleteTask', payload);
+            context.commit('updateTask', payload);
+        },
+        async createTask (context, payload: CreateTaskData) {
+            const taskResponse = await createTaskAction(payload);
+            const task         = await getTaskAction(taskResponse.name);
+            context.commit('addTask', task);
         },
     },
-} as StoreOptions<{ tasks: Array<Task> }>;
+} as StoreOptions<{ tasks: Array<Task>, loading: boolean, uploaded: boolean }>;

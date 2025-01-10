@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section v-if="tasks.length">
         <task-card
             v-for="task in tasks"
             :key="task.id"
@@ -7,8 +7,11 @@
             :id="task.id"
             :description="task.description"
             :status="task.status"
+            :completion-date="task.completionDate"
         />
     </section>
+    <h2 v-else-if="loading">Загрузка..</h2>
+    <h2 v-else>Пусто</h2>
 </template>
 
 <script lang="ts">
@@ -20,12 +23,16 @@ import { computed } from 'vue';
 export default {
     components: { TaskCard },
     setup () {
-        const store = useStore();
-        const tasks = computed(() => store.getters['freelance/tasks']);
-        return { tasks };
+        const store   = useStore();
+        const tasks   = computed(() => store.getters['freelance/tasks']);
+        const loading = computed(() => store.getters['freelance/loading']);
+
+        return { tasks, loading };
     },
     beforeCreate () {
-        this.$store.dispatch('freelance/uploadTasks');
+        if (!this.$store.getters['freelance/uploaded']) {
+            this.$store.dispatch('freelance/uploadTasks');
+        }
     },
 };
 </script>

@@ -6,7 +6,7 @@
                 <router-link :to="`/task/${id}`">
                     <h2>{{ title }}</h2>
                 </router-link>
-                <task-status :status="status"/>
+                <task-status :status="status" :completion-date="completionDate"/>
             </div>
         </header>
         <p>{{ description }}</p>
@@ -19,7 +19,7 @@ import TaskStatus from '@/freelance/entity/TaskStatus/TaskStatus.vue';
 
 export default {
     components: { TaskStatus },
-    props     : [ 'id', 'title', 'description', 'status' ],
+    props     : [ 'id', 'title', 'description', 'status', 'completionDate' ],
 };
 </script>
 

@@ -10,9 +10,13 @@ import { TaskStatus } from '@/freelance/types/task.types.ts';
 
 
 export default {
-    props: [ 'status' ],
+    props: [ 'status', 'completionDate' ],
     setup (props) {
         const statusTitle = computed(() => {
+            if (new Date(props.completionDate).getTime() < Date.now()) {
+                return 'Просрочено';
+            }
+
             switch (props.status) {
                 case TaskStatus.CANCELED:
                     return 'Отменена';
@@ -28,6 +32,10 @@ export default {
         });
 
         const statusStyles = computed(() => {
+            if (new Date(props.completionDate).getTime() < Date.now()) {
+                return 'error';
+            }
+
             switch (props.status) {
                 case TaskStatus.CANCELED:
                     return 'canceled';
@@ -43,7 +51,7 @@ export default {
         });
 
         return {
-            statusTitle,
+            statusTitle: statusTitle,
             statusStyles,
         };
     },
