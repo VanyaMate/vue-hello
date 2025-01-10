@@ -1,12 +1,12 @@
-import { CommiterOptions } from '@vanyamate/commiter/dist/src/Commiter.types';
 import { resolve } from 'path';
+import { CommiterOptions } from '@vanyamate/commiter';
 
 
+/// @ts-ignore
 const __dirname = import.meta.dirname;
 const gitFolder = resolve(__dirname, '..', '..');
 
 export default {
-    types    : [ 'Fix 🙏', 'New feature 🔥', 'Update 💡' ],
     types    : {
         Update       : 'Update 💡',
         Fix          : 'Fix 🙏',
