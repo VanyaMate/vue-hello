@@ -13,6 +13,6 @@ export default {
         'New feature': 'New feature 🔥',
     },
     entities : [ 'Post', 'User', 'Comment', 'App' ],
-    pattern  : '[ {{type}} ] {{entity}} - {{message}}',
+    pattern  : '[ {{type}} ] {{entities}} - {{message}}',
     gitFolder: gitFolder,
 } as CommiterOptions;
