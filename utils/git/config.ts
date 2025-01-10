@@ -7,12 +7,14 @@ const __dirname = import.meta.dirname;
 const gitFolder = resolve(__dirname, '..', '..');
 
 export default {
-    types    : {
+    types                  : {
         Update       : 'Update 💡',
         Fix          : 'Fix 🙏',
         'New feature': 'New feature 🔥',
     },
-    entities : [ 'App', 'CompositionApi', 'Freelance', 'Plan', 'Resume', 'Router', 'Todo', 'User', 'Vuex' ],
-    pattern  : '{{type}} : {{entities}} - {{message}}',
-    gitFolder: gitFolder,
+    entities               : [ 'App', 'CompositionApi', 'Freelance', 'Plan', 'Resume', 'Router', 'Todo', 'User', 'Vuex' ],
+    pattern                : '{{type}} : {{entities}} - {{message}}',
+    gitFolder              : gitFolder,
+    gitRemoteRepositoryName: 'origin',
+    gitPushDefault         : true,
 } as CommiterOptions;
