@@ -12,7 +12,7 @@ export default {
         Fix          : 'Fix 🙏',
         'New feature': 'New feature 🔥',
     },
-    entities : [ 'Post', 'User', 'Comment', 'App' ],
+    entities : [ 'App', 'CompositionApi', 'Freelance', 'Plan', 'Resume', 'Router', 'Todo', 'User', 'Vuex' ],
     pattern  : '{{type}} : {{entities}} - {{message}}',
     gitFolder: gitFolder,
 } as CommiterOptions;

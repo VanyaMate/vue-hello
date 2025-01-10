@@ -1,4 +1,4 @@
-import { Commiter } from '@vanyamate/commiter/dist/src/Commiter';
+import { Commiter } from '@vanyamate/commiter';
 import config from './config';
 
 
