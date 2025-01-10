@@ -1,4 +1,4 @@
 export default {
-    types: ['FIX', 'NEW FEATURE', 'UPDATE'],
+    types: ['Fix 🙏', 'New feature 🔥', 'Update 💡'],
     entities: ['Post', 'User', 'Comment', 'App'],
 };
