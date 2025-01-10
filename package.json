@@ -7,7 +7,7 @@
         "dev": "vite",
         "build": "vue-tsc -b && vite build",
         "preview": "vite preview",
-        "commit": "node utils/git/committer.js"
+        "commit": "tsx utils/git/commiter.ts"
     },
     "dependencies": {
         "@vanyamate/sec-vue": "^0.0.3",
@@ -18,10 +18,12 @@
     },
     "devDependencies": {
         "@inquirer/prompts": "^7.2.1",
+        "@vanyamate/commiter": "^0.0.1",
         "@vitejs/plugin-vue": "^5.2.1",
         "@vue/tsconfig": "^0.7.0",
         "i": "^0.3.7",
         "npm": "^11.0.0",
+        "tsx": "^4.19.2",
         "typescript": "~5.6.2",
         "vite": "^6.0.5",
         "vue-tsc": "^2.2.0"
