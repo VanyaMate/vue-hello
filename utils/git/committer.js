@@ -40,8 +40,8 @@ const getMessage = async function () {
         .then((message) => commitData.message = message)
 }
 
-const createCommit = function (commitData) {
-
+const getCommitMessage = function (pattern, data) {
+    return pattern.replace('{{type}}', data.type).replace('{{entity}}', data.entity).replace('{{message}}', data.message);
 }
 
 
@@ -53,5 +53,5 @@ getType()
     .then(getMessage)
     .then(() => {
         execSync('git add .', {cwd: resolve(__dirname, '..', '..'),});
-        execSync(`git commit -m "[${commitData.type}] ${commitData.entity} - ${commitData.message}"`, {cwd: resolve(__dirname, '..', '..'),});
+        execSync(`git commit -m "${getCommitMessage(config.pattern, commitData)}"`, {cwd: resolve(__dirname, '..', '..'),});
     })
